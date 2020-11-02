@@ -72,36 +72,36 @@ body header .header_wrapper .bottom_wrapper p {
 body hr {
   margin: 10px 20px;
 }
-body main {
+body #content {
   width: 100%;
   height: auto;
 }
-body main .main_wrapper {
+body #content .main_wrapper {
   display: block;
   margin: 50px 50px 0 50px;
   width: calc(100%-100px);
 }
-body main .main_wrapper .left_wrapper {
+body #content .main_wrapper .left_wrapper {
   display: inline-block;
   width: 30%;
   float: left;
 }
-body main .main_wrapper .left_wrapper .button {
+body #content .main_wrapper .left_wrapper .button {
   display: block;
   width: 100px;
   margin-bottom: 10px;
   padding: 10px 100px;
   background-color: #96fa96;
 }
-body main .main_wrapper .left_wrapper .button:hover {
+body #content .main_wrapper .left_wrapper .button:hover {
   background-color: #80d180;
 }
-body main .main_wrapper .right_wrapper {
+body #content .main_wrapper .right_wrapper {
   display: inline-block;
   width: 70%;
   float: right;
 }
-body main .main_wrapper .right_wrapper .tabs .tab {
+body #content .main_wrapper .right_wrapper .tabs .tab {
   display: inline-block;
   padding: 10px 20px;
   background-color: lightgray;
@@ -110,26 +110,26 @@ body main .main_wrapper .right_wrapper .tabs .tab {
   color: black;
   font-family: "Roboto", sans-serif;
 }
-body main .main_wrapper .right_wrapper .tabs .tab:hover {
+body #content .main_wrapper .right_wrapper .tabs .tab:hover {
   background-color: #b6b6b6;
 }
-body main .main_wrapper .right_wrapper .block {
+body #content .main_wrapper .right_wrapper .block {
   width: 1000px;
   height: 500px;
   background-color: white;
   border: 1px solid black;
   border-radius: 5px;
 }
-body main .main_wrapper .right_wrapper .block .table {
+body #content .main_wrapper .right_wrapper .block .table {
   width: calc(100% - 60px);
   height: 50%;
   margin: 30px;
   background-color: #c4c4c4;
 }
-body main .main_wrapper .right_wrapper .block .table tr td {
+body #content .main_wrapper .right_wrapper .block .table tr td {
   text-align: center;
 }
-body main .main_wrapper .clearfix::after {
+body #content .main_wrapper .clearfix::after {
   content: "";
   display: table;
   clear: both;
