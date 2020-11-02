@@ -1,0 +1,150 @@
+@import url("https://fonts.googleapis.com/css2?family=Trispace:wght@100;200;300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+html a,
+body a {
+  text-decoration: none;
+}
+
+.button {
+  box-shadow: 2px 2px 5px gray;
+  border: 1px solid #757575;
+  border-radius: 7px;
+  color: black;
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+}
+
+body {
+  background-color: #e6e6e6;
+}
+body header {
+  width: 100%;
+  height: 100px;
+}
+body header .header_wrapper {
+  width: calc(100% - 100px);
+  height: 100px;
+  margin: 20px 50px 0 50px;
+}
+body header .header_wrapper .top_wrapper {
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+body header .header_wrapper .top_wrapper .left_wrapper {
+  width: 50%;
+  float: left;
+}
+body header .header_wrapper .top_wrapper .left_wrapper h1 {
+  font-family: "Trispace", sans-serif;
+  color: #ff8181;
+}
+body header .header_wrapper .top_wrapper .right_wrapper {
+  position: relative;
+  width: 50%;
+  float: right;
+}
+body header .header_wrapper .top_wrapper .right_wrapper .header_buttons .button {
+  padding: 10px 100px;
+  background-color: #8abdff;
+}
+body header .header_wrapper .top_wrapper .right_wrapper .header_buttons .button:hover {
+  background-color: #75a0d8;
+}
+body header .header_wrapper .top_wrapper .right_wrapper .header_buttons .button:first-child {
+  margin-right: 20px;
+}
+body header .header_wrapper .top_wrapper .clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+body header .header_wrapper .bottom_wrapper p {
+  margin: 0;
+  font-family: "Josefin Sans", sans-serif;
+}
+body hr {
+  margin: 10px 20px;
+}
+body main {
+  width: 100%;
+  height: auto;
+}
+body main .main_wrapper {
+  display: block;
+  margin: 50px 50px 0 50px;
+  width: calc(100%-100px);
+}
+body main .main_wrapper .left_wrapper {
+  display: inline-block;
+  width: 30%;
+  float: left;
+}
+body main .main_wrapper .left_wrapper .button {
+  display: block;
+  width: 100px;
+  margin-bottom: 10px;
+  padding: 10px 100px;
+  background-color: #96fa96;
+}
+body main .main_wrapper .left_wrapper .button:hover {
+  background-color: #80d180;
+}
+body main .main_wrapper .right_wrapper {
+  display: inline-block;
+  width: 70%;
+  float: right;
+}
+body main .main_wrapper .right_wrapper .tabs .tab {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: lightgray;
+  border: 1px solid #757575;
+  border-bottom: 0;
+  color: black;
+  font-family: "Roboto", sans-serif;
+}
+body main .main_wrapper .right_wrapper .tabs .tab:hover {
+  background-color: #b6b6b6;
+}
+body main .main_wrapper .right_wrapper .block {
+  width: 1000px;
+  height: 500px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+body main .main_wrapper .right_wrapper .block .table {
+  width: calc(100% - 60px);
+  height: 50%;
+  margin: 30px;
+  background-color: #c4c4c4;
+}
+body main .main_wrapper .right_wrapper .block .table tr td {
+  text-align: center;
+}
+body main .main_wrapper .clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+body footer {
+  height: auto;
+  margin: 50px;
+}
+body footer .c1 {
+  display: inline-block;
+  font-family: "Josefin Sans", sans-serif;
+}
+body footer .c2 {
+  position: relative;
+  display: inline-block;
+  left: 1000px;
+  font-family: "Josefin Sans", sans-serif;
+}
