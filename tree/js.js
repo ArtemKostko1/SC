@@ -55,9 +55,12 @@ class Tree {
   }
 
   //НАХОЖДЕНИЕ МИНИМАЛЬНОГО ЭЛЕМЕНТА СПРАВА ОТ РОДИТЕЛЯ
-  minNode(node) {
-    if (node.left === null) return node;
-    else return this.findMinNode(node.left);
+  findminNode(node) {
+    if (node.left === null) {
+      return node;
+    } else {
+      return this.findMinNode(node.left);
+    }
   }
 
   //УДАЛЕНИЕ
@@ -154,7 +157,10 @@ tree.add(0);
 tree.add(2);
 tree.add(4);
 tree.add(5);
-//tree.remove(15);
+tree.remove(5);
+tree.remove(10);
+tree.remove(4);
+tree.remove(3);
 
 console.log("Слева напрво");
 tree.LCR(tree.root);
