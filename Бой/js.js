@@ -73,6 +73,25 @@ class Viking extends Human {
   class = "Viking";
 }
 
+function Random() {
+  return Math.floor(Math.random() * 100);
+}
+
+function attackOrDefense() {
+  var attackChance = Random();
+  var blockChance = Random();
+
+  if (attackChance == blockChance) {
+    return 0;
+  } else {
+    if (attackChance > blockChance) {
+      return 1;
+    } else {
+      return -1;
+    }
+  }
+}
+
 let swordsman = new Swordsman(200, 35);
 let archer = new Archer(150, 25);
 let mage = new Mage(100, 50);
