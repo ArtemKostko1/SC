@@ -1,56 +1,30 @@
 class Human {
   constructor(armor, damage) {
-    this.class = "";
+    this.name = "";
     this.hp = 100;
     this.armor = armor;
     this.damage = damage;
   }
 
-  get getHp() {
-    return this.hp;
-  }
-
-  get getArmor() {
-    return this.armor;
-  }
-
-  get getDamage() {
-    return this.damage;
-  }
-
-  set setHp(value) {
-    if (value < 0) {
-      return;
-    }
-
-    this.hp = value;
-  }
-
-  set setArmor(value) {
-    if (value < 0) {
-      return;
-    }
-
-    this.armor = value;
-  }
-
-  getDamage(dmg) {
-    if (this.hp <= 0) {
-      this.setHp(0);
-
-      this.isDead();
-    }
-
-    if (this.armor == 0) {
-      this.setHp(this.hp - dmg);
+  wound(dmg) {
+    if (this.armor <= 0) {
+      this.armor = 0;
+      this.hp -= dmg;
+      if(this.hp <= 0){
+        this.hp = 0;
+      }
     } else {
-      this.setArmor(this.armor - dmg);
+      this.armor -= dmg;
+      if(this.armor <= 0){
+        this.armor = 0;
+      }
     }
   }
 
   isDead() {
     if (this.hp <= 0) {
-      console.log(`${this.class} мёртв ...`);
+      console.log(`${this.name} мёртв ...`);
+      this.hp = 0;
       return true;
     }
     return false;
@@ -58,19 +32,19 @@ class Human {
 }
 
 class Swordsman extends Human {
-  class = "Swordsman";
+  name = "Swordsman";
 }
 
 class Archer extends Human {
-  class = "Archer";
+  name = "Archer";
 }
 
 class Mage extends Human {
-  class = "Mage";
+  name = "Mage";
 }
 
 class Viking extends Human {
-  class = "Viking";
+  name = "Viking";
 }
 
 function Random() {
@@ -81,18 +55,65 @@ function attackOrDefense() {
   var attackChance = Random();
   var blockChance = Random();
 
-  if (attackChance == blockChance) {
-    return 0;
+  if (attackChance > blockChance) {
+    return 1;
   } else {
-    if (attackChance > blockChance) {
-      return 1;
-    } else {
-      return -1;
-    }
+    return 0;
   }
 }
 
-let swordsman = new Swordsman(200, 35);
-let archer = new Archer(150, 25);
-let mage = new Mage(100, 50);
-let viking = new Viking(200, 30);
+function getStatistics(firstWarior, secondWarior) {
+  console.log(`${firstWarior.name}: здоровье - ${firstWarior.hp}, броня - ${firstWarior.armor}`);
+  console.log(`${secondWarior.name}: здоровье - ${secondWarior.hp}, броня - ${secondWarior.armor}`);
+}
+
+async function attack(firstWarior, secondWarior) {
+  if (attackOrDefense() == 1) {
+    console.log("Оба воина атакуют");
+
+    await secondWarior.wound(firstWarior.damage);
+    await firstWarior.wound(secondWarior.damage);
+
+    getStatistics(firstWarior, secondWarior);
+  } else {
+    console.log(`${firstWarior.name} - атакует, ${secondWarior.name} - защищается`);
+
+    await secondWarior.wound(firstWarior.damage);
+
+    getStatistics(firstWarior, secondWarior);
+  }
+}
+
+async function defense(firstWarior, secondWarior) {
+  if (attackOrDefense() == 1) {
+    console.log(`${firstWarior.name} - защищается, ${secondWarior.name} - атакует`);
+
+    await firstWarior.wound(secondWarior.damage);
+
+    getStatistics(firstWarior, secondWarior);
+  } else {
+    console.log("Оба воина защищаются");
+
+    await firstWarior.wound(0);
+
+    getStatistics(firstWarior, secondWarior);
+  }
+}
+
+async function battle(firstWarior, secondWarior) {
+  while (!firstWarior.isDead() && !secondWarior.isDead()) {
+    if (attackOrDefense() == 1) {
+      await attack(firstWarior, secondWarior);
+    } else {
+      await defense(firstWarior, secondWarior);
+    }
+    console.log("--------------------------------------------------------------------------");
+  }
+}
+
+let swordsman = new Swordsman(200, 75);
+let archer = new Archer(150, 65);
+let mage = new Mage(100, 100);
+let viking = new Viking(170, 70);
+
+battle(archer, viking);
