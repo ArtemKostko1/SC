@@ -1,0 +1,7 @@
+D:\Front-End\SC\С#\UML\UML\obj\Debug\UML.csprojAssemblyReference.cache
+D:\Front-End\SC\С#\UML\UML\obj\Debug\UML.csproj.CoreCompileInputs.cache
+D:\Front-end\SC\С#\UML\UML\bin\Debug\UML.exe.config
+D:\Front-end\SC\С#\UML\UML\bin\Debug\UML.exe
+D:\Front-end\SC\С#\UML\UML\bin\Debug\UML.pdb
+D:\Front-end\SC\С#\UML\UML\obj\Debug\UML.exe
+D:\Front-end\SC\С#\UML\UML\obj\Debug\UML.pdb
