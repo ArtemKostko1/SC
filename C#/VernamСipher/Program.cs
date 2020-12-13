@@ -8,47 +8,56 @@ namespace VernamСipher
 {
 	class Program
 	{
-        //public static string encrypt(string Str, string key)
+        //class Key
         //{
-        //    while (Str.Length > key.Length)
+        //    int index = 0;
+        //    byte[] key;
+        //    public int getkey()
         //    {
-        //        key += key;
+        //        if (index > key.Length) index = 0;
+        //        return key[index];
+        //        index++;
         //    }
-
-        //    string cryptText = "";
-
-        //    for (int i = 0; i < Str.Length; i++)
-        //    {
-        //        cryptText += ((Str[i] - '0') ^ (key[i] - '0') + '0');
-        //    }
-
-        //    return cryptText;
         //}
-
-        public static string encrypt(string str, string key)
+        public static byte[] Xor(byte[] byteStr, byte[] key)
         {
-            int i = 0;
-            int j = 0;
-            for (i = key.Length; i < str.Length; i++)
-            {
-                key += key[j % key.Length];
-                j++;
-            }
+            byte[] cryptText = new byte[byteStr.Length];
+            int byteStrLen = byteStr.Length;
 
-            string cryptText = "";
-
-            for (i = 0; i < str.Length; i++)
+            for (int i = 0; i < byteStrLen; i++)
             {
-                cryptText += (key[i] - 'A' + str[i] - 'A') % 26 + 'A';
+                cryptText[i] ^= key[i];
             }
 
             return cryptText;
         }
 
+        public static string encrypt(string Str, byte[] key)
+        {
+            char[] charStr = Str.ToCharArray();
+            byte[] byteStr = new byte[charStr.Length];
+
+            for (int i = 0; i < charStr.Length; i++)
+            {
+                byteStr[i] = (byte)charStr[i];
+            }
+
+            byte[] xorRes = Xor(byteStr, key);
+
+            char[] cryptStr = new char[xorRes.Length];
+
+            for (int i = 0; i < xorRes.Length; i++)
+            {
+                cryptStr[i] = (char)xorRes[i];
+            }
+
+            return cryptStr.ToString();
+        }
+
         static void Main(string[] args)
 		{
             string defoultStr = "Sqript-test";
-            string key = "1001101";
+            byte[] key = new byte[] { 1, 0, 0, 1, 1, 0, 1 };
 
             Console.WriteLine($"Исходный текст: {defoultStr}");
 
