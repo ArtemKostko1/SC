@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VernamСipher", "VernamСip
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Power", "Power\Power.csproj", "{2A99BF16-A99F-418D-9DA6-15A4F4C5EA00}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LINQ", "LINQ\LINQ.csproj", "{105B36AA-2CA9-400C-80CA-0189BDEE2FC7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{2A99BF16-A99F-418D-9DA6-15A4F4C5EA00}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2A99BF16-A99F-418D-9DA6-15A4F4C5EA00}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2A99BF16-A99F-418D-9DA6-15A4F4C5EA00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{105B36AA-2CA9-400C-80CA-0189BDEE2FC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{105B36AA-2CA9-400C-80CA-0189BDEE2FC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{105B36AA-2CA9-400C-80CA-0189BDEE2FC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{105B36AA-2CA9-400C-80CA-0189BDEE2FC7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

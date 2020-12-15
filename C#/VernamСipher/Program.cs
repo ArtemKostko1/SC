@@ -22,9 +22,8 @@ namespace VernamСipher
         public static byte[] Xor(byte[] byteStr, byte[] key)
         {
             byte[] cryptText = new byte[byteStr.Length];
-            int byteStrLen = byteStr.Length;
 
-            for (int i = 0; i < byteStrLen; i++)
+            for (int i = 0; i < byteStr.Length; i++)
             {
                 cryptText[i] ^= key[i];
             }
