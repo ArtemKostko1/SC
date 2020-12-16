@@ -61,24 +61,26 @@ namespace LINQ
 			}
 		}
 
-		//public static void fourthTask()
-		//{
-		//	var list = new List<Client>
-		//	{
-		//		new Client (1, 2020, 3, 1.5),
-		//		new Client (2, 2020, 5, 2),
-		//		new Client (3, 2020, 12, 1),
-		//		new Client (4, 2020, 9, 3),
-		//		new Client (5, 2020, 6, 1)
-		//	};
+		public static void fourthTask()
+		{
+			var list = new List<Client>
+			{
+				new Client (1, 2020, 3, 1.5),
+				new Client (2, 2020, 3, 2),
+				new Client (3, 2018, 12, 1),
+				new Client (4, 2018, 12, 3),
+				new Client (5, 2019, 6, 1)
+			};
 
-		//	var select = list.GroupBy();
+			var select = list.GroupBy(n => new { n.year, n.month })
+							 .Select(n => n.Select(m => m.workoutDuration).Sum())
+							 .OrderByDescending(n => n);
 
-		//	foreach (var i in select)
-		//	{
-
-		//	}
-		//}
+			foreach (var i in select)
+			{
+				Console.WriteLine(i);
+			}
+		}
 
 		static void Main(string[] args)
 		{
@@ -94,7 +96,7 @@ namespace LINQ
 
 			Console.WriteLine("-----------------------------------------------");
 
-			//fourthTask();
+			fourthTask();
 
 			Console.ReadKey();
 		}
