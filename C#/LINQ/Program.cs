@@ -51,6 +51,7 @@ namespace LINQ
 			int[] list = { 122, 454, 135, 0, -32, 100, 82, 90 };
 
 			var select = list.GroupBy( last => (last % 10))
+							 .Where(count => count.Count() > 1)
 							 .Select(max => max.Max())
 							 .OrderBy(sort => (sort % 10));
 
