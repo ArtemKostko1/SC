@@ -1,7 +1,9 @@
-create database sqlTask;
-go
-use sqlTask;
+if db_id('sqlTask') is not null
+	drop database sqlTask;
+create database sqlTask;	
 
+if object_id('Account') is not null
+	drop table Account;
 create table Account(
 	account_id int identity primary key,
 	accountName nvarchar(100),
@@ -9,6 +11,8 @@ create table Account(
 	dateChange datetime
 );
 
+if object_id('BillType') is not null
+	drop table BillType;
 create table BillType(
 	billType_id int identity primary key,
 	BillTypeName nvarchar(20),
@@ -16,6 +20,8 @@ create table BillType(
 	dateChange datetime
 );
 
+if object_id('Bill') is not null
+	drop table Bill;
 create table Bill(
 	bill_id int identity primary key,
 	number nvarchar(30),
@@ -28,6 +34,8 @@ create table Bill(
 	foreign key (entity) references Account(account_id)
 );
 
+if object_id('Contact') is not null
+	drop table Contact;
 create table Contact(
 	contact_id int identity primary key,
 	surname nvarchar (50),
@@ -39,6 +47,8 @@ create table Contact(
 	foreign key (entity) references Account(account_id)
 );
 
+if object_id('_User') is not null
+	drop table _User;
 create table _User(
 	_user_id int identity primary key,
 	login nvarchar(50),
@@ -50,6 +60,8 @@ create table _User(
 	foreign key (individual) references Contact(contact_id),
 );
 
+if object_id('AddressType') is not null
+	drop table AddressType;
 create table AddressType(
 	addressType_id int identity primary key,
 	addressTypeName nvarchar(20),
@@ -57,6 +69,8 @@ create table AddressType(
 	dateChange datetime
 );
 
+if object_id('City') is not null
+	drop table City;
 create table City(
 	city_id int identity primary key,
 	cityName nvarchar(50),
@@ -64,6 +78,8 @@ create table City(
 	dateChange datetime
 );
 
+if object_id('Street') is not null
+	drop table Street;
 create table Street(
 	street_id int identity primary key,
 	streetName nvarchar(50),
@@ -74,6 +90,8 @@ create table Street(
 	foreign key (city) references City(city_id),
 );
 
+if object_id('Address') is not null
+	drop table Address;
 create table Address(
 	address_id int identity primary key,
 	actual bit,
