@@ -1,0 +1,725 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище sqlTaskModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="_User">
+          <Key>
+            <PropertyRef Name="_user_id" />
+          </Key>
+          <Property Name="_user_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="login" Type="nvarchar" MaxLength="50" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" />
+          <Property Name="individual" Type="int" />
+          <Property Name="dateCreation" Type="datetime" />
+          <Property Name="dateChange" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="account_id" />
+          </Key>
+          <Property Name="account_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="accountName" Type="nvarchar" MaxLength="100" />
+          <Property Name="dateCreation" Type="datetime" />
+          <Property Name="dateChange" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="address_id" />
+          </Key>
+          <Property Name="address_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="actual" Type="bit" />
+          <Property Name="addressType" Type="int" />
+          <Property Name="city" Type="int" />
+          <Property Name="street" Type="int" />
+          <Property Name="individual" Type="int" />
+          <Property Name="entity" Type="int" />
+          <Property Name="dateCreation" Type="datetime" />
+          <Property Name="dateChange" Type="datetime" />
+        </EntityType>
+        <EntityType Name="AddressType">
+          <Key>
+            <PropertyRef Name="addressType_id" />
+          </Key>
+          <Property Name="addressType_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="addressTypeName" Type="nvarchar" MaxLength="20" />
+          <Property Name="dateCreation" Type="datetime" />
+          <Property Name="dateChange" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Bill">
+          <Key>
+            <PropertyRef Name="bill_id" />
+          </Key>
+          <Property Name="bill_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="number" Type="nvarchar" MaxLength="30" />
+          <Property Name="entity" Type="int" />
+          <Property Name="billType" Type="int" />
+          <Property Name="dateCreation" Type="datetime" />
+          <Property Name="dateChange" Type="datetime" />
+        </EntityType>
+        <EntityType Name="BillType">
+          <Key>
+            <PropertyRef Name="billType_id" />
+          </Key>
+          <Property Name="billType_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BillTypeName" Type="nvarchar" MaxLength="20" />
+          <Property Name="dateCreation" Type="datetime" />
+          <Property Name="dateChange" Type="datetime" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="city_id" />
+          </Key>
+          <Property Name="city_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cityName" Type="nvarchar" MaxLength="50" />
+          <Property Name="dateCreation" Type="datetime" />
+          <Property Name="dateChange" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="contact_id" />
+          </Key>
+          <Property Name="contact_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="surname" Type="nvarchar" MaxLength="50" />
+          <Property Name="firstname" Type="nvarchar" MaxLength="50" />
+          <Property Name="entity" Type="int" />
+          <Property Name="dateCreation" Type="datetime" />
+          <Property Name="dateChange" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Street">
+          <Key>
+            <PropertyRef Name="street_id" />
+          </Key>
+          <Property Name="street_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="streetName" Type="nvarchar" MaxLength="50" />
+          <Property Name="city" Type="int" />
+          <Property Name="dateCreation" Type="datetime" />
+          <Property Name="dateChange" Type="datetime" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK___User__dateChang__2E1BDC42">
+          <End Role="Contact" Type="Self.Contact" Multiplicity="0..1" />
+          <End Role="_User" Type="Self._User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="contact_id" />
+            </Principal>
+            <Dependent Role="_User">
+              <PropertyRef Name="individual" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Address__city__38996AB5">
+          <End Role="City" Type="Self.City" Multiplicity="0..1" />
+          <End Role="Address" Type="Self.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="city_id" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="city" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Address__dateCha__37A5467C">
+          <End Role="AddressType" Type="Self.AddressType" Multiplicity="0..1" />
+          <End Role="Address" Type="Self.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AddressType">
+              <PropertyRef Name="addressType_id" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="addressType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Address__entity__3B75D760">
+          <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+          <End Role="Address" Type="Self.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="account_id" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="entity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Address__individ__3A81B327">
+          <End Role="Contact" Type="Self.Contact" Multiplicity="0..1" />
+          <End Role="Address" Type="Self.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="contact_id" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="individual" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Address__street__398D8EEE">
+          <End Role="Street" Type="Self.Street" Multiplicity="0..1" />
+          <End Role="Address" Type="Self.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Street">
+              <PropertyRef Name="street_id" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="street" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Bill__dateChange__276EDEB3">
+          <End Role="BillType" Type="Self.BillType" Multiplicity="0..1" />
+          <End Role="Bill" Type="Self.Bill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BillType">
+              <PropertyRef Name="billType_id" />
+            </Principal>
+            <Dependent Role="Bill">
+              <PropertyRef Name="billType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Bill__entity__286302EC">
+          <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+          <End Role="Bill" Type="Self.Bill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="account_id" />
+            </Principal>
+            <Dependent Role="Bill">
+              <PropertyRef Name="entity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Contact__dateCha__2B3F6F97">
+          <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+          <End Role="Contact" Type="Self.Contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="account_id" />
+            </Principal>
+            <Dependent Role="Contact">
+              <PropertyRef Name="entity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Street__dateChan__34C8D9D1">
+          <End Role="City" Type="Self.City" Multiplicity="0..1" />
+          <End Role="Street" Type="Self.Street" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="city_id" />
+            </Principal>
+            <Dependent Role="Street">
+              <PropertyRef Name="city" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище sqlTaskModelContainer">
+          <EntitySet Name="_User" EntityType="Self._User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AddressType" EntityType="Self.AddressType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bill" EntityType="Self.Bill" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BillType" EntityType="Self.BillType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Street" EntityType="Self.Street" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK___User__dateChang__2E1BDC42" Association="Self.FK___User__dateChang__2E1BDC42">
+            <End Role="Contact" EntitySet="Contact" />
+            <End Role="_User" EntitySet="_User" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Address__city__38996AB5" Association="Self.FK__Address__city__38996AB5">
+            <End Role="City" EntitySet="City" />
+            <End Role="Address" EntitySet="Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Address__dateCha__37A5467C" Association="Self.FK__Address__dateCha__37A5467C">
+            <End Role="AddressType" EntitySet="AddressType" />
+            <End Role="Address" EntitySet="Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Address__entity__3B75D760" Association="Self.FK__Address__entity__3B75D760">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="Address" EntitySet="Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Address__individ__3A81B327" Association="Self.FK__Address__individ__3A81B327">
+            <End Role="Contact" EntitySet="Contact" />
+            <End Role="Address" EntitySet="Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Address__street__398D8EEE" Association="Self.FK__Address__street__398D8EEE">
+            <End Role="Street" EntitySet="Street" />
+            <End Role="Address" EntitySet="Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Bill__dateChange__276EDEB3" Association="Self.FK__Bill__dateChange__276EDEB3">
+            <End Role="BillType" EntitySet="BillType" />
+            <End Role="Bill" EntitySet="Bill" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Bill__entity__286302EC" Association="Self.FK__Bill__entity__286302EC">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="Bill" EntitySet="Bill" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Contact__dateCha__2B3F6F97" Association="Self.FK__Contact__dateCha__2B3F6F97">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="Contact" EntitySet="Contact" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Street__dateChan__34C8D9D1" Association="Self.FK__Street__dateChan__34C8D9D1">
+            <End Role="City" EntitySet="City" />
+            <End Role="Street" EntitySet="Street" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="sqlTaskModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C_User">
+          <Key>
+            <PropertyRef Name="C_user_id" />
+          </Key>
+          <Property Name="C_user_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="individual" Type="Int32" />
+          <Property Name="dateCreation" Type="DateTime" Precision="3" />
+          <Property Name="dateChange" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Contact" Relationship="Self.FK___User__dateChang__2E1BDC42" FromRole="C_User" ToRole="Contact" />
+        </EntityType>
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="account_id" />
+          </Key>
+          <Property Name="account_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="accountName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="dateCreation" Type="DateTime" Precision="3" />
+          <Property Name="dateChange" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Address" Relationship="Self.FK__Address__entity__3B75D760" FromRole="Account" ToRole="Address" />
+          <NavigationProperty Name="Bill" Relationship="Self.FK__Bill__entity__286302EC" FromRole="Account" ToRole="Bill" />
+          <NavigationProperty Name="Contact" Relationship="Self.FK__Contact__dateCha__2B3F6F97" FromRole="Account" ToRole="Contact" />
+        </EntityType>
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="address_id" />
+          </Key>
+          <Property Name="address_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="actual" Type="Boolean" />
+          <Property Name="addressType" Type="Int32" />
+          <Property Name="city" Type="Int32" />
+          <Property Name="street" Type="Int32" />
+          <Property Name="individual" Type="Int32" />
+          <Property Name="entity" Type="Int32" />
+          <Property Name="dateCreation" Type="DateTime" Precision="3" />
+          <Property Name="dateChange" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Account" Relationship="Self.FK__Address__entity__3B75D760" FromRole="Address" ToRole="Account" />
+          <NavigationProperty Name="City1" Relationship="Self.FK__Address__city__38996AB5" FromRole="Address" ToRole="City" />
+          <NavigationProperty Name="AddressType1" Relationship="Self.FK__Address__dateCha__37A5467C" FromRole="Address" ToRole="AddressType" />
+          <NavigationProperty Name="Contact" Relationship="Self.FK__Address__individ__3A81B327" FromRole="Address" ToRole="Contact" />
+          <NavigationProperty Name="Street1" Relationship="Self.FK__Address__street__398D8EEE" FromRole="Address" ToRole="Street" />
+        </EntityType>
+        <EntityType Name="AddressType">
+          <Key>
+            <PropertyRef Name="addressType_id" />
+          </Key>
+          <Property Name="addressType_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="addressTypeName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="dateCreation" Type="DateTime" Precision="3" />
+          <Property Name="dateChange" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Address" Relationship="Self.FK__Address__dateCha__37A5467C" FromRole="AddressType" ToRole="Address" />
+        </EntityType>
+        <EntityType Name="Bill">
+          <Key>
+            <PropertyRef Name="bill_id" />
+          </Key>
+          <Property Name="bill_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="number" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="entity" Type="Int32" />
+          <Property Name="billType" Type="Int32" />
+          <Property Name="dateCreation" Type="DateTime" Precision="3" />
+          <Property Name="dateChange" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Account" Relationship="Self.FK__Bill__entity__286302EC" FromRole="Bill" ToRole="Account" />
+          <NavigationProperty Name="BillType1" Relationship="Self.FK__Bill__dateChange__276EDEB3" FromRole="Bill" ToRole="BillType" />
+        </EntityType>
+        <EntityType Name="BillType">
+          <Key>
+            <PropertyRef Name="billType_id" />
+          </Key>
+          <Property Name="billType_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BillTypeName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="dateCreation" Type="DateTime" Precision="3" />
+          <Property Name="dateChange" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Bill" Relationship="Self.FK__Bill__dateChange__276EDEB3" FromRole="BillType" ToRole="Bill" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="city_id" />
+          </Key>
+          <Property Name="city_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cityName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dateCreation" Type="DateTime" Precision="3" />
+          <Property Name="dateChange" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Address" Relationship="Self.FK__Address__city__38996AB5" FromRole="City" ToRole="Address" />
+          <NavigationProperty Name="Street" Relationship="Self.FK__Street__dateChan__34C8D9D1" FromRole="City" ToRole="Street" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="contact_id" />
+          </Key>
+          <Property Name="contact_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="firstname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="entity" Type="Int32" />
+          <Property Name="dateCreation" Type="DateTime" Precision="3" />
+          <Property Name="dateChange" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="C_User" Relationship="Self.FK___User__dateChang__2E1BDC42" FromRole="Contact" ToRole="C_User" />
+          <NavigationProperty Name="Account" Relationship="Self.FK__Contact__dateCha__2B3F6F97" FromRole="Contact" ToRole="Account" />
+          <NavigationProperty Name="Address" Relationship="Self.FK__Address__individ__3A81B327" FromRole="Contact" ToRole="Address" />
+        </EntityType>
+        <EntityType Name="Street">
+          <Key>
+            <PropertyRef Name="street_id" />
+          </Key>
+          <Property Name="street_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="streetName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="city" Type="Int32" />
+          <Property Name="dateCreation" Type="DateTime" Precision="3" />
+          <Property Name="dateChange" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Address" Relationship="Self.FK__Address__street__398D8EEE" FromRole="Street" ToRole="Address" />
+          <NavigationProperty Name="City1" Relationship="Self.FK__Street__dateChan__34C8D9D1" FromRole="Street" ToRole="City" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK___User__dateChang__2E1BDC42">
+          <End Role="Contact" Type="Self.Contact" Multiplicity="0..1" />
+          <End Role="C_User" Type="Self.C_User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="contact_id" />
+            </Principal>
+            <Dependent Role="C_User">
+              <PropertyRef Name="individual" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Address__entity__3B75D760">
+          <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+          <End Role="Address" Type="Self.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="account_id" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="entity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Bill__entity__286302EC">
+          <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+          <End Role="Bill" Type="Self.Bill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="account_id" />
+            </Principal>
+            <Dependent Role="Bill">
+              <PropertyRef Name="entity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Contact__dateCha__2B3F6F97">
+          <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+          <End Role="Contact" Type="Self.Contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="account_id" />
+            </Principal>
+            <Dependent Role="Contact">
+              <PropertyRef Name="entity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Address__city__38996AB5">
+          <End Role="City" Type="Self.City" Multiplicity="0..1" />
+          <End Role="Address" Type="Self.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="city_id" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="city" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Address__dateCha__37A5467C">
+          <End Role="AddressType" Type="Self.AddressType" Multiplicity="0..1" />
+          <End Role="Address" Type="Self.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AddressType">
+              <PropertyRef Name="addressType_id" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="addressType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Address__individ__3A81B327">
+          <End Role="Contact" Type="Self.Contact" Multiplicity="0..1" />
+          <End Role="Address" Type="Self.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="contact_id" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="individual" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Address__street__398D8EEE">
+          <End Role="Street" Type="Self.Street" Multiplicity="0..1" />
+          <End Role="Address" Type="Self.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Street">
+              <PropertyRef Name="street_id" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="street" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Bill__dateChange__276EDEB3">
+          <End Role="BillType" Type="Self.BillType" Multiplicity="0..1" />
+          <End Role="Bill" Type="Self.Bill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BillType">
+              <PropertyRef Name="billType_id" />
+            </Principal>
+            <Dependent Role="Bill">
+              <PropertyRef Name="billType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Street__dateChan__34C8D9D1">
+          <End Role="City" Type="Self.City" Multiplicity="0..1" />
+          <End Role="Street" Type="Self.Street" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="city_id" />
+            </Principal>
+            <Dependent Role="Street">
+              <PropertyRef Name="city" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="sqlTaskConnection" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C_User" EntityType="Self.C_User" />
+          <EntitySet Name="Account" EntityType="Self.Account" />
+          <EntitySet Name="Address" EntityType="Self.Address" />
+          <EntitySet Name="AddressType" EntityType="Self.AddressType" />
+          <EntitySet Name="Bill" EntityType="Self.Bill" />
+          <EntitySet Name="BillType" EntityType="Self.BillType" />
+          <EntitySet Name="City" EntityType="Self.City" />
+          <EntitySet Name="Contact" EntityType="Self.Contact" />
+          <EntitySet Name="Street" EntityType="Self.Street" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <AssociationSet Name="FK___User__dateChang__2E1BDC42" Association="Self.FK___User__dateChang__2E1BDC42">
+            <End Role="Contact" EntitySet="Contact" />
+            <End Role="C_User" EntitySet="C_User" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Address__entity__3B75D760" Association="Self.FK__Address__entity__3B75D760">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="Address" EntitySet="Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Bill__entity__286302EC" Association="Self.FK__Bill__entity__286302EC">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="Bill" EntitySet="Bill" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Contact__dateCha__2B3F6F97" Association="Self.FK__Contact__dateCha__2B3F6F97">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="Contact" EntitySet="Contact" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Address__city__38996AB5" Association="Self.FK__Address__city__38996AB5">
+            <End Role="City" EntitySet="City" />
+            <End Role="Address" EntitySet="Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Address__dateCha__37A5467C" Association="Self.FK__Address__dateCha__37A5467C">
+            <End Role="AddressType" EntitySet="AddressType" />
+            <End Role="Address" EntitySet="Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Address__individ__3A81B327" Association="Self.FK__Address__individ__3A81B327">
+            <End Role="Contact" EntitySet="Contact" />
+            <End Role="Address" EntitySet="Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Address__street__398D8EEE" Association="Self.FK__Address__street__398D8EEE">
+            <End Role="Street" EntitySet="Street" />
+            <End Role="Address" EntitySet="Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Bill__dateChange__276EDEB3" Association="Self.FK__Bill__dateChange__276EDEB3">
+            <End Role="BillType" EntitySet="BillType" />
+            <End Role="Bill" EntitySet="Bill" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Street__dateChan__34C8D9D1" Association="Self.FK__Street__dateChan__34C8D9D1">
+            <End Role="City" EntitySet="City" />
+            <End Role="Street" EntitySet="Street" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище sqlTaskModelContainer" CdmEntityContainer="sqlTaskConnection">
+          <EntitySetMapping Name="C_User">
+            <EntityTypeMapping TypeName="sqlTaskModel.C_User">
+              <MappingFragment StoreEntitySet="_User">
+                <ScalarProperty Name="C_user_id" ColumnName="_user_id" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="individual" ColumnName="individual" />
+                <ScalarProperty Name="dateCreation" ColumnName="dateCreation" />
+                <ScalarProperty Name="dateChange" ColumnName="dateChange" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Account">
+            <EntityTypeMapping TypeName="sqlTaskModel.Account">
+              <MappingFragment StoreEntitySet="Account">
+                <ScalarProperty Name="account_id" ColumnName="account_id" />
+                <ScalarProperty Name="accountName" ColumnName="accountName" />
+                <ScalarProperty Name="dateCreation" ColumnName="dateCreation" />
+                <ScalarProperty Name="dateChange" ColumnName="dateChange" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Address">
+            <EntityTypeMapping TypeName="sqlTaskModel.Address">
+              <MappingFragment StoreEntitySet="Address">
+                <ScalarProperty Name="address_id" ColumnName="address_id" />
+                <ScalarProperty Name="actual" ColumnName="actual" />
+                <ScalarProperty Name="addressType" ColumnName="addressType" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="street" ColumnName="street" />
+                <ScalarProperty Name="individual" ColumnName="individual" />
+                <ScalarProperty Name="entity" ColumnName="entity" />
+                <ScalarProperty Name="dateCreation" ColumnName="dateCreation" />
+                <ScalarProperty Name="dateChange" ColumnName="dateChange" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AddressType">
+            <EntityTypeMapping TypeName="sqlTaskModel.AddressType">
+              <MappingFragment StoreEntitySet="AddressType">
+                <ScalarProperty Name="addressType_id" ColumnName="addressType_id" />
+                <ScalarProperty Name="addressTypeName" ColumnName="addressTypeName" />
+                <ScalarProperty Name="dateCreation" ColumnName="dateCreation" />
+                <ScalarProperty Name="dateChange" ColumnName="dateChange" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bill">
+            <EntityTypeMapping TypeName="sqlTaskModel.Bill">
+              <MappingFragment StoreEntitySet="Bill">
+                <ScalarProperty Name="bill_id" ColumnName="bill_id" />
+                <ScalarProperty Name="number" ColumnName="number" />
+                <ScalarProperty Name="entity" ColumnName="entity" />
+                <ScalarProperty Name="billType" ColumnName="billType" />
+                <ScalarProperty Name="dateCreation" ColumnName="dateCreation" />
+                <ScalarProperty Name="dateChange" ColumnName="dateChange" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BillType">
+            <EntityTypeMapping TypeName="sqlTaskModel.BillType">
+              <MappingFragment StoreEntitySet="BillType">
+                <ScalarProperty Name="billType_id" ColumnName="billType_id" />
+                <ScalarProperty Name="BillTypeName" ColumnName="BillTypeName" />
+                <ScalarProperty Name="dateCreation" ColumnName="dateCreation" />
+                <ScalarProperty Name="dateChange" ColumnName="dateChange" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="City">
+            <EntityTypeMapping TypeName="sqlTaskModel.City">
+              <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="city_id" ColumnName="city_id" />
+                <ScalarProperty Name="cityName" ColumnName="cityName" />
+                <ScalarProperty Name="dateCreation" ColumnName="dateCreation" />
+                <ScalarProperty Name="dateChange" ColumnName="dateChange" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contact">
+            <EntityTypeMapping TypeName="sqlTaskModel.Contact">
+              <MappingFragment StoreEntitySet="Contact">
+                <ScalarProperty Name="contact_id" ColumnName="contact_id" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="firstname" ColumnName="firstname" />
+                <ScalarProperty Name="entity" ColumnName="entity" />
+                <ScalarProperty Name="dateCreation" ColumnName="dateCreation" />
+                <ScalarProperty Name="dateChange" ColumnName="dateChange" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Street">
+            <EntityTypeMapping TypeName="sqlTaskModel.Street">
+              <MappingFragment StoreEntitySet="Street">
+                <ScalarProperty Name="street_id" ColumnName="street_id" />
+                <ScalarProperty Name="streetName" ColumnName="streetName" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="dateCreation" ColumnName="dateCreation" />
+                <ScalarProperty Name="dateChange" ColumnName="dateChange" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="sqlTaskModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

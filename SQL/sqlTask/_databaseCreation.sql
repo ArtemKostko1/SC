@@ -1,9 +1,6 @@
 use master;
 
-if db_id('sqlTask') is not null
-	drop database sqlTask;
 create database sqlTask;
-
 use sqlTask;
 
 create table Account(

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4048833938004cf387169169d9343f0c" Name="Diagram1">
+        <EntityTypeShape EntityType="sqlTaskModel.C_User" Width="1.5" PointX="4" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="sqlTaskModel.Account" Width="1.5" PointX="6.625" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="sqlTaskModel.Address" Width="1.5" PointX="10.625" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="sqlTaskModel.AddressType" Width="1.5" PointX="10.625" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="sqlTaskModel.Bill" Width="1.5" PointX="6.625" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="sqlTaskModel.BillType" Width="1.5" PointX="3.625" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="sqlTaskModel.City" Width="1.5" PointX="10.625" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="sqlTaskModel.Contact" Width="1.5" PointX="7" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="sqlTaskModel.Street" Width="1.5" PointX="13.375" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="sqlTaskModel.sysdiagrams" Width="1.5" PointX="8" PointY="2.25" IsExpanded="true" />
+        <AssociationConnector Association="sqlTaskModel.FK___User__dateChang__2E1BDC42" ManuallyRouted="false" />
+        <AssociationConnector Association="sqlTaskModel.FK__Address__entity__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="sqlTaskModel.FK__Bill__entity__286302EC" ManuallyRouted="false" />
+        <AssociationConnector Association="sqlTaskModel.FK__Contact__dateCha__2B3F6F97" ManuallyRouted="false" />
+        <AssociationConnector Association="sqlTaskModel.FK__Address__city__38996AB5" ManuallyRouted="false" />
+        <AssociationConnector Association="sqlTaskModel.FK__Address__dateCha__37A5467C" ManuallyRouted="false" />
+        <AssociationConnector Association="sqlTaskModel.FK__Address__individ__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="sqlTaskModel.FK__Address__street__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="sqlTaskModel.FK__Bill__dateChange__276EDEB3" ManuallyRouted="false" />
+        <AssociationConnector Association="sqlTaskModel.FK__Street__dateChan__34C8D9D1" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

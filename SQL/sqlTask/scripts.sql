@@ -1,5 +1,5 @@
 use sqlTask;
-go
+GO
 /*
 --Список всех зарегистрированных пользователей с существующим/не существующим физ лицом
 select firstname, surname, accountName, login, password from _User
@@ -46,7 +46,7 @@ JOIN BillType ON Bill.billType = BillType.billType_id
 WHERE BillType.BillTypeName = 'Frozen';
 
 --Функция, возвращающая есть ли у ЮрЛица замороженные счета
-go
+GO
 CREATE FUNCTION dbo.checkBillType(@entity_id int)  
 RETURNS varchar(10) 
 AS   
@@ -81,10 +81,11 @@ as
 	update Address set actual = 'false'
 	where addressType = (select addressType from inserted) and individual = (select individual from inserted);
 
-go
+GO
 INSERT INTO Address(actual, addressType, city, street, individual, entity) VALUES
 ('true', 3, 1, 1, 1, 1)
 SELECT * FROM Address;
+delete trigger Adress_Insert;
 
 --При создании пользователя автоматически создавать Физ лицо и Юр лицо
 create trigger addUser
@@ -93,11 +94,13 @@ as
 	insert into Contact(surname, firstname, entity) values(null, null, null);
 	insert into Account(accountName) values(null);
 
-go
+GO
 insert into _User(login, password, individual) values('', '', null);
 select * from _User;
 select * from Contact;
 select * from Account;
+
+delete trigger addUser;
 
 --Представление всех Юр лиц и Физ лиц в виде одной таблице, где Наименование = Юр лицо.Наименование/(Физ
 create view EntityesIndiviuals
@@ -107,6 +110,6 @@ as
 union all
 	select AccountName
 	from Account
-go
+GO
 SELECT * FROM EntityesIndiviuals
 */
