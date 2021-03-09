@@ -1,0 +1,238 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Terrasoft.ServiceBus.Host</name>
+    </assembly>
+    <members>
+        <member name="T:Terrasoft.ServiceBus.Host.Bus">
+            <summary>
+            Implementation of the <see cref="T:Terrasoft.ServiceBus.IBus" /> interface.
+            </summary>
+        </member>
+        <member name="M:Terrasoft.ServiceBus.Host.Bus.#ctor(MassTransit.IPublishEndpoint,Terrasoft.ServiceBus.UserContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Terrasoft.ServiceBus.Host.Bus"/> class.
+            </summary>
+            <param name="publishEndpoint">The MassTransit publish endpoint.</param>
+            <param name="userContext">The user context.</param>
+        </member>
+        <member name="M:Terrasoft.ServiceBus.Host.Bus.Send``1(``0)">
+            <inheritdoc />
+        </member>
+        <member name="T:Terrasoft.ServiceBus.Host.BusConfigurator">
+            <summary>
+            Implementation of the <see cref="T:Terrasoft.ServiceBus.Host.IBusConfigurator" /> interface.
+            </summary>
+        </member>
+        <member name="M:Terrasoft.ServiceBus.Host.BusConfigurator.#ctor(System.String,System.Int32,Terrasoft.ServiceBus.Host.MessageBusOperatingMode)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Terrasoft.ServiceBus.Host.BusConfigurator"/> class.
+            </summary>
+            <param name="connectionString">RabbitMQ instance connection string.</param>
+            <param name="consumerCount">Count of the consumers.</param>
+            <param name="operatingMode"></param>
+        </member>
+        <member name="M:Terrasoft.ServiceBus.Host.BusConfigurator.#ctor(Terrasoft.Core.AppConnection)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Terrasoft.ServiceBus.Host.BusConfigurator"/> class.
+            </summary>
+            <param name="appConnection">The application connection.</param>
+        </member>
+        <member name="P:Terrasoft.ServiceBus.Host.BusConfigurator.ConsumerCount">
+            <inheritdoc />
+        </member>
+        <member name="P:Terrasoft.ServiceBus.Host.BusConfigurator.OperatingMode">
+            <summary>
+            Determines a message bus operating mode.
+            </summary>
+        </member>
+        <member name="M:Terrasoft.ServiceBus.Host.BusConfigurator.Validate">
+            <inheritdoc />
+        </member>
+        <member name="M:Terrasoft.ServiceBus.Host.BusConfigurator.Configure(MassTransit.RabbitMqTransport.IRabbitMqBusFactoryConfigurator)">
+            <inheritdoc />
+        </member>
+        <member name="M:Terrasoft.ServiceBus.Host.BusConfigurator.ConfigureEndpoint(MassTransit.RabbitMqTransport.IRabbitMqReceiveEndpointConfigurator)">
+            <inheritdoc />
+        </member>
+        <member name="M:Terrasoft.ServiceBus.Host.BusConfigurator.ConfigureEndpoint(MassTransit.IInMemoryReceiveEndpointConfigurator)">
+            <summary>
+            Configures InMemory endpoint.
+            </summary>
+            <param name="endpoint">Endpoint to configure.</param>
+        </member>
+        <member name="T:Terrasoft.ServiceBus.Host.BusControl">
+            <summary>
+            Implementation of the <see cref="T:Terrasoft.ServiceBus.IBusControl" /> interface.
+            </summary>
+        </member>
+        <member name="M:Terrasoft.ServiceBus.Host.BusControl.#ctor(Terrasoft.ServiceBus.Host.IBusControlFactory,Terrasoft.ServiceBus.Host.IBusConfigurator)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Terrasoft.ServiceBus.Host.BusControl"/> class.
+            </summary>
+            <param name="busControlFactory"></param>
+            <param name="configurator">The configurator.</param>
+        </member>
+        <member name="M:Terrasoft.ServiceBus.Host.BusControl.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="M:Terrasoft.ServiceBus.Host.BusControl.Start">
+            <inheritdoc />
+        </member>
+        <member name="M:Terrasoft.ServiceBus.Host.BusControl.CreateBus(Terrasoft.ServiceBus.UserContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Terrasoft.ServiceBus.Host.BusControlFactory">
+            <inheritdoc cref="T:Terrasoft.ServiceBus.Host.IBusControlFactory"/>
+        </member>
+        <member name="M:Terrasoft.ServiceBus.Host.BusControlFactory.#ctor(Terrasoft.ServiceBus.Host.IBusConfigurator,Terrasoft.ServiceBus.IMessageConsumerProvider,Microsoft.Extensions.Logging.ILoggerFactory)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Terrasoft.ServiceBus.Host.BusControlFactory"/> type.
+            </summary>
+            <param name="busConfigurator">Instance of the <see cref="T:Terrasoft.ServiceBus.Host.IBusConfigurator"/> type.</param>
+            <param name="messageConsumerProvider">Instance of the <see cref="T:Terrasoft.ServiceBus.IMessageConsumerProvider"/> type.</param>
+            <param name="loggerFactory">Instance of the <see cref="T:Microsoft.Extensions.Logging.ILoggerFactory"/> type.</param>
+        </member>
+        <member name="M:Terrasoft.ServiceBus.Host.BusControlFactory.Create(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="T:Terrasoft.ServiceBus.Host.ConsumeContext">
+            <summary>
+            Execution context for the service bus consumer.
+            </summary>
+        </member>
+        <member name="M:Terrasoft.ServiceBus.Host.ConsumeContext.#ctor(MassTransit.IPublishEndpoint,Terrasoft.ServiceBus.UserContext)">
+            <summary>
+            Initializes new instance of <see cref="T:Terrasoft.ServiceBus.Host.ConsumeContext"/> type.
+            </summary>
+            <param name="publishEndpoint">Message publish endpoint.</param>
+            <param name="userContext">User context.</param>
+        </member>
+        <member name="P:Terrasoft.ServiceBus.Host.ConsumeContext.RequestServices">
+            <inheritdoc />
+        </member>
+        <member name="P:Terrasoft.ServiceBus.Host.ConsumeContext.UserConnection">
+            <inheritdoc />
+        </member>
+        <member name="P:Terrasoft.ServiceBus.Host.ConsumeContext.Bus">
+            <inheritdoc />
+        </member>
+        <member name="T:Terrasoft.ServiceBus.Host.IBusConfigurator">
+            <summary>
+            Provides methods for configuring the service bus.
+            </summary>
+        </member>
+        <member name="P:Terrasoft.ServiceBus.Host.IBusConfigurator.ConsumerCount">
+            <summary>
+            Determines how many consumers should be connected to queue.
+            </summary>
+        </member>
+        <member name="P:Terrasoft.ServiceBus.Host.IBusConfigurator.OperatingMode">
+            <summary>
+            Determines a message bus operating mode.
+            </summary>
+        </member>
+        <member name="M:Terrasoft.ServiceBus.Host.IBusConfigurator.Validate">
+            <summary>
+            Validates the service bus configuration.
+            </summary>
+        </member>
+        <member name="M:Terrasoft.ServiceBus.Host.IBusConfigurator.Configure(MassTransit.RabbitMqTransport.IRabbitMqBusFactoryConfigurator)">
+            <summary>
+            Configures the service bus via specified configurator.
+            </summary>
+            <param name="configurator">The configurator.</param>
+        </member>
+        <member name="M:Terrasoft.ServiceBus.Host.IBusConfigurator.ConfigureEndpoint(MassTransit.RabbitMqTransport.IRabbitMqReceiveEndpointConfigurator)">
+            <summary>
+            Configures RabbitMQ endpoint.
+            </summary>
+            <param name="endpoint">Endpoint to configure.</param>
+        </member>
+        <member name="M:Terrasoft.ServiceBus.Host.IBusConfigurator.ConfigureEndpoint(MassTransit.IInMemoryReceiveEndpointConfigurator)">
+            <summary>
+            Configures InMemory endpoint.
+            </summary>
+            <param name="endpoint">Endpoint to configure.</param>
+        </member>
+        <member name="T:Terrasoft.ServiceBus.Host.IBusControlFactory">
+            <summary>
+            A skeleton used for creating an instance of the <see cref="T:MassTransit.IBusControl"/> type.
+            </summary>
+        </member>
+        <member name="M:Terrasoft.ServiceBus.Host.IBusControlFactory.Create(System.Boolean)">
+            <summary>
+            Creates a new instance of the <see cref="T:MassTransit.IBusControl"/> type.
+            </summary>
+            <param name="memoryMode">Determines whether to use in-memory mode or not.</param>
+            <returns>Created instance.</returns>
+        </member>
+        <member name="T:Terrasoft.ServiceBus.Host.InternalConsumerAdapter`2">
+            <summary>
+            Used to adapt <see cref="T:Terrasoft.ServiceBus.IMessageConsumer`1"/> implementation to
+            <see cref="T:MassTransit.IConsumer`1"/> interface.
+            </summary>
+            <typeparam name="TMessage">Consumer message type.</typeparam>
+            <typeparam name="TConsumer">Consumer type.</typeparam>
+        </member>
+        <member name="M:Terrasoft.ServiceBus.Host.InternalConsumerAdapter`2.Consume(MassTransit.ConsumeContext{`0})">
+            <inheritdoc />
+        </member>
+        <member name="T:Terrasoft.ServiceBus.Host.MessageBusOperatingMode">
+            <summary>
+            Determines the message bus operating mode.
+            </summary>
+        </member>
+        <member name="F:Terrasoft.ServiceBus.Host.MessageBusOperatingMode.Auto">
+            <summary>
+            Automatically choosing between <see cref="F:Terrasoft.ServiceBus.Host.MessageBusOperatingMode.RabbitMQ"/> and <see cref="F:Terrasoft.ServiceBus.Host.MessageBusOperatingMode.InMemory"/> based
+            on the RabbitMQ availability.
+            </summary>
+        </member>
+        <member name="F:Terrasoft.ServiceBus.Host.MessageBusOperatingMode.RabbitMQ">
+            <summary>
+            Message bus operates through RabbitMQ. 
+            </summary>
+        </member>
+        <member name="F:Terrasoft.ServiceBus.Host.MessageBusOperatingMode.InMemory">
+            <summary>
+            Message bus operates in memory.
+            </summary>
+        </member>
+        <member name="T:Terrasoft.ServiceBus.Host.MessageConsumerProvider">
+            <inheritdoc />
+        </member>
+        <member name="M:Terrasoft.ServiceBus.Host.MessageConsumerProvider.#ctor(System.Collections.Generic.IEnumerable{Terrasoft.ServiceBus.IMessageConsumersAssembly})">
+            <summary>
+            Creates new instance of <see cref="T:Terrasoft.ServiceBus.Host.MessageConsumerProvider"/> type.
+            </summary>
+            <param name="assemblies">Assemblies with message consumers.</param>
+        </member>
+        <member name="M:Terrasoft.ServiceBus.Host.MessageConsumerProvider.GetConsumers">
+            <inheritdoc />
+        </member>
+        <member name="T:Terrasoft.ServiceBus.Host.ServiceBusModule">
+            <summary>
+            Core module that creates a new instance of the <see cref="T:Terrasoft.ServiceBus.Host.Bus"/> and registers its
+            dependencies.
+            </summary>
+        </member>
+        <member name="M:Terrasoft.ServiceBus.Host.ServiceBusModule.#ctor(Terrasoft.ServiceBus.Host.IBusConfigurator)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Terrasoft.ServiceBus.Host.ServiceBusModule"/> class.
+            </summary>
+            <param name="busConfigurator">The instance of <see cref="T:Terrasoft.ServiceBus.Host.IBusConfigurator"/> for
+            configuring the service bus.</param>
+        </member>
+        <member name="M:Terrasoft.ServiceBus.Host.ServiceBusModule.#ctor(Terrasoft.Core.AppConnection)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Terrasoft.ServiceBus.Host.ServiceBusModule"/> module.
+            </summary>
+            <param name="appConnection">Instance of the <see cref="T:Terrasoft.Core.AppConnection"/> type to initialize a module with.
+            </param>
+        </member>
+        <member name="M:Terrasoft.ServiceBus.Host.ServiceBusModule.Configure(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>
